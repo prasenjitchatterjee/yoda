@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+
+    <style>
+        body {
+          background-color: #f8f9fa;
+          font-family: 'Segoe UI', sans-serif;
+          padding: 40px;
+          text-align: center;
+        }
+      
+        h2 {
+          color: #333;
+          margin-bottom: 20px;
+        }
+      
+        table {
+          border-collapse: collapse;
+          width: 80%;
+          margin: 0 auto;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+      
+        th, td {
+          padding: 14px 18px;
+          border: 1px solid #e0e0e0;
+          transition: background-color 0.2s ease;
+        }
+      
+        thead th {
+          background-color: #e1e8f0;
+          color: black;
+          font-weight: bold;
+        }
+      
+        tbody tr:hover {
+          background-color: #ffe5e5; /* light red */
+          cursor: pointer;
+        }
+      </style>
+      
+</head> 
+<body>
+
+{% for table in tables %}
+        {{ table|safe }}
+{% endfor %} 
+</body> 
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Links</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .prompts-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #373737, #737373);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            border: 2px solid #fcd200;
+        }
+
+        .prompts-container:hover {
+            transform: scale(1.05);
+        }
+
+        .link {
+            display: block;
+            padding: 10px;
+            margin: 8px 0;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .disabled {
+            color: #888;
+            cursor: not-allowed;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight {
+            background-color: #ffcc00;
+            color: #222;
+            border: 2px solid #ffcc00;
+        }
+
+        .captured-prompt {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff7e5f;
+        }
+
+        .captured-prompt-done{
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff7e5f;
+        }
+
+
+    </style>
+</head>
+<body>
+
+   
+    <!-- <div class="prompts-container">
+        {% for prompt in prompts %}
+        <a href="javascript:void(0);" class="link" onclick="capturePrompt('{{ prompt }}')">{{ prompt }}</a><br>
+        {% endfor %}
+    </div> -->
+
+    <div class="prompts-container">
+        {% for prompt in prompts %}
+        <a href="javascript:void(0);" class="link" onclick="capturePrompt('{{ prompt }}', this.closest('.prompts-container'))">{{ prompt }}</a><br>
+        {% endfor %}
+    </div>
+    <p>Captured prompt: <span class="captured-prompt">None</span></p>
+
+
+</body>
+</html>

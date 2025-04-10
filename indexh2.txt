@@ -1,0 +1,33 @@
+function botResponse(rawText) {
+      document.getElementById("textInput").disabled = true;
+
+      // Show typing animation
+      const typingIndicator = `
+        <div class="container">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>`;
+      appendMessage(BOT_NAME, BOT_IMG, "left", typingIndicator);
+
+      $.get("/get", { msg: rawText }).done(function (data) {
+        $(".msger-chat").children().last().remove(); // Remove typing dots
+
+        if (Array.isArray(data)) {
+          let delay = 0;
+          data.forEach((msg, index) => {
+            setTimeout(() => {
+              appendMessage(BOT_NAME, BOT_IMG, "left", msg);
+              if (index === data.length - 1) {
+                document.getElementById("textInput").disabled = false;
+              }
+            }, delay);
+            delay += 800; // Adjust delay between messages here
+          });
+        } else {
+          // Fallback if backend didn't return an array
+          appendMessage(BOT_NAME, BOT_IMG, "left", data);
+          document.getElementById("textInput").disabled = false;
+        }
+      });
+    }

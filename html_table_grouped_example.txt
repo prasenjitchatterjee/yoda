@@ -1,0 +1,48 @@
+<!-- Assume this is Flask-rendered -->
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Population</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>New York</td>
+      <td>8,398,748</td>
+      <td rowspan="3">USA</td>
+    </tr>
+    <tr>
+      <td>Los Angeles</td>
+      <td>3,990,456</td>
+    </tr>
+    <tr>
+      <td>Chicago</td>
+      <td>2,705,994</td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 60%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  td:nth-child(3) {
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e0f7fa;
+    font-weight: bold;
+  }
+</style>

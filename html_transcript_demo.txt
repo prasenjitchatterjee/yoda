@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Conversation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+
+    .chat-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .message {
+      display: flex;
+      margin-bottom: 12px;
+    }
+
+    .agent {
+      justify-content: flex-start;
+    }
+
+    .customer {
+      justify-content: flex-end;
+    }
+
+    .bubble {
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 16px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .agent .bubble {
+      background-color: #e3f2fd;
+      color: #333;
+      border-bottom-left-radius: 0;
+    }
+
+    .customer .bubble {
+      background-color: #dcedc8;
+      color: #333;
+      border-bottom-right-radius: 0;
+    }
+
+    .sender {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 3px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="message agent">
+    <div class="bubble">
+      <div class="sender">Agent</div>
+      Hello, I am Pauline, how may I help you?
+    </div>
+  </div>
+  <div class="message customer">
+    <div class="bubble">
+      <div class="sender">Customer</div>
+      Hi Pauline, I need help on this.
+    </div>
+  </div>
+  <div class="message agent">
+    <div class="bubble">
+      <div class="sender">Agent</div>
+      Sure, I’d be happy to assist. Can you please tell me more?
+    </div>
+  </div>
+  <div class="message customer">
+    <div class="bubble">
+      <div class="sender">Customer</div>
+      I'm facing an issue with my login. It says invalid credentials.
+    </div>
+  </div>
+  <!-- Add more messages like this -->
+</div>
+
+</body>
+</html>

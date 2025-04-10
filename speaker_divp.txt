@@ -1,0 +1,42 @@
+def convert_chat_to_html(chat_text: str) -> str:
+    html_output = ['<div class="chat-container">']
+    
+    for line in chat_text.strip().split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+
+        if line.startswith("Agent:"):
+            role = "agent"
+            sender = "Agent"
+            message = line[len("Agent:"):].strip()
+        elif line.startswith("Customer:"):
+            role = "customer"
+            sender = "Customer"
+            message = line[len("Customer:"):].strip()
+        else:
+            # In case of malformed line, skip or handle differently
+            continue
+
+        html_output.append(f'''
+  <div class="message {role}">
+    <div class="bubble">
+      <div class="sender">{sender}</div>
+      {message}
+    </div>
+  </div>
+        ''')
+
+    html_output.append('</div>')
+    return '\n'.join(html_output)
+
+# Example usage
+chat_log = """
+Agent: Hello, I am Pauline, how may I help you?
+Customer: Hi Pauline, I need help on this.
+Agent: Sure, I’d be happy to assist. Can you please tell me more?
+Customer: I'm facing an issue with my login. It says invalid credentials.
+"""
+
+html_result = convert_chat_to_html(chat_log)
+print(html_result)

@@ -1,0 +1,102 @@
+<table id="city-table">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>New York</td><td>8398748</td></tr>
+    <tr><td>Los Angeles</td><td>3990456</td></tr>
+    <tr><td>Chicago</td><td>2705994</td></tr>
+    <tr><td>Houston</td><td>2325502</td></tr>
+    <tr><td>Phoenix</td><td>1660272</td></tr>
+  </tbody>
+</table>
+
+
+
+<div style="width: 100%; max-width: 1000px; height: 400px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden;">
+  <h3 style="text-align: center; margin-bottom: 10px;">City Population Chart</h3>
+  <div style="position: relative; width: 100%; height: calc(100% - 40px);">
+    <canvas id="cityChart" style="width: 100%; height: 100%; display: block;"></canvas>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart.js DataLabels Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const table = document.getElementById('city-table');
+    const rows = table.querySelectorAll('tbody tr');
+
+    const cityNames = [];
+    const populations = [];
+
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      cityNames.push(cells[0].textContent.trim());
+      populations.push(Number(cells[1].textContent.trim()));
+    });
+
+    const canvas = document.getElementById('cityChart');
+    const ctx = canvas.getContext('2d');
+
+    // Gradient for bars
+    const gradient = ctx.createLinearGradient(0, 0, canvas.offsetWidth, 0);
+    gradient.addColorStop(0, 'rgba(255, 99, 132, 0.6)');
+    gradient.addColorStop(1, 'rgba(255, 0, 0, 0.9)');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: cityNames,
+        datasets: [{
+          label: 'Population',
+          data: populations,
+          backgroundColor: gradient,
+          borderColor: 'rgba(255, 0, 0, 1)',
+          borderWidth: 1,
+          barThickness: 25,
+          categoryPercentage: 0.7
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            bottom: 10 // adds some breathing room
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          title: { display: false },
+          datalabels: {
+            anchor: 'end',
+            align: 'right',
+            color: '#000',
+            font: {
+              size: 12
+            },
+            formatter: value => value.toLocaleString()
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { display: false }
+          },
+          y: {
+            grid: { display: false }
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  });
+</script>

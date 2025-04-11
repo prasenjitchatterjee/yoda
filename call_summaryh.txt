@@ -1,0 +1,18 @@
+<div style="
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #333;
+">
+  <h3 style="margin-top: 0;">Welcome to City Insights</h3>
+  <p>
+    Discover detailed information about various cities, including population, demographics, and more.
+    This panel provides a clear and elegant summary in a beautifully styled layout.
+  </p>
+</div>
